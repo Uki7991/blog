@@ -29,11 +29,17 @@ class Article extends Model
         'source_id',
         'url',
         'url_to_image',
+        'theme_id',
     ];
 
     public function source(): BelongsTo
     {
         return $this->belongsTo(Source::class);
+    }
+
+    public function theme(): BelongsTo
+    {
+        return $this->belongsTo(Theme::class);
     }
 
     public function scopeFilter(Builder $query, Request $request): Builder

@@ -17,3 +17,7 @@ $router->get('/', [
     'as' => 'home',
     'uses' => 'HomeController@index',
 ]);
+
+$router->get('dispatch', function () {
+    dispatch(new \App\Jobs\ParseArticleJob());
+});

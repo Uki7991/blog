@@ -25,8 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(new ParseArticleJob())
-            ->everyMinute()
-            ->withoutOverlapping();
+        $schedule->call(function () {
+            \Queue::push(new ParseArticleJob());
+        });
     }
 }
