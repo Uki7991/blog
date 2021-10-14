@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function index(Request $request): array
     {
         $articles = Article::query()
-            ->with('source')
+            ->with(['source', 'theme'])
             ->filter($request)
             ->get()
             ->when($request->group, function ($collection, $value) {
